@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <title>
+        Crud Operations
+    </title>
+    <style>
+        .banner {
+        background-color: #F5B7B1;
+        height: 120px; / Increase the height to your desired value /
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        .banner-text {
+            text-align:left;
+        }
+    </style> 
+    <head >
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- <link rel="stylesheet"   href="{% static 'style.css' %}"> -->
+        <div class="">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner" style="background-color: lightpink;">
+                       <div class="banner-text pt-4" style="font-family: Georgia, 'Times New Roman', Times, serif;">
+                        
+                            <h1 style="text-align: center;">SIMPLE CRUD OPERATIONS</h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </head>
+    {% block content %}
+{% endblock %}
+</body>
+</html>

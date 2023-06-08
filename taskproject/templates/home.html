@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <style>
+    .container {
+    outline: 2px solid #3700ff; /* Add an outline to the container */
+    padding: 20px; /* Add some padding to create spacing between the outline and content */
+    margin-top: 20px; /* Add margin to create space after the banner */
+    }
+</style>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" action="{% url 'base' %}">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="Sl no.">SL NO.</label>
+                  <input type="text" class="form-control" name="Serial" placeholder="Enter your number">
+
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Item Name</label>
+                  <input type="text" class="form-control" name="Item_Name" placeholder="Item name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Description</label>
+                    <input type="text" class="form-control" name="Description" placeholder="Description">
+                  </div>
+                <div class="form-group form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
+              </form>      
+  </div>
+  </div>
+</div>
+<div class="alert-success" style="margin-right: 183px; margin-left: 183px; margin-top: 2px; border-radius: 5px;">
+  {% if messages %}
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success">{{ message }}</div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="container-fluid" style="margin-top: 15px;">
+<div class="row">
+<div class="col-2"></div>
+<div class="col-8">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item_Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in task1 %}
+          <tr>
+            <!-- <th scope="row"></th> -->
+            <td>{{i.SL_No}}</td>
+            <td>{{i.Item_Name}}</td>
+            <td>{{i.Description}}</td>
+          <td>
+              <div class="row">
+                  <div class="col-3">
+                      <a href="{% url 'update' i.id %}" class="btn btn-warning">Update</a>
+                      <!-- <button type="button" class="btn btn-warning">Update</button> -->
+                  </div>&nbsp;&nbsp;
+                  <div class="col-3">
+                      <a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a>
+                      <!-- <button type="button" class="btn btn-danger">Delete</button> -->
+                  </div>
+              </div>
+          </td>
+                {% endfor %}
+              </tbody>
+          </table>
+</div>
+
+
+
+
+
+              {% endblock %}
